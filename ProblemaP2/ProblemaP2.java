@@ -8,7 +8,6 @@ import java.util.Queue;
 
 
 public class ProblemaP2{  
-    //Main donde se arma y crea el grafo 
     public static void main(String[] args) {
         Scanner scann = new Scanner(System.in); 
         int numCases = Integer.parseInt(scann.nextLine()); 
@@ -61,8 +60,8 @@ public class ProblemaP2{
             
             for (int nodo : nodos) {
                 if (mapaCoor.get(nodo).get(2) == 2) {  // Verifica si es célula calculadora (Tipo 2)
-                    int[][] mCopy = copiarMatriz(grafo); // Crea una copia de la matriz
-                    bloquearNodo(mCopy, nodo); // Bloquea el nodo en la matriz copia
+                    int[][] mCopy = copiarMatriz(grafo); // Crea una copia del grafo
+                    bloquearNodo(mCopy, nodo); // Bloquea el nodo en el grafo de copia
 
                     int flujoConBloqueo = flujoMaximo(mCopy, 0, mCopy.length - 1);
                     int reduccion = maxF - flujoConBloqueo;
@@ -79,7 +78,7 @@ public class ProblemaP2{
     }
      
 
-    //creacion de matriz de adja
+    //creacion de matriz de adj
     public static int[][] grafo(HashMap<Integer, List<Integer>> mapaCoor, HashMap<Integer, List<String>> mapa, int dist, List<Integer> nodos) {
     int numFilas = nodos.size();
     int[][] matriz = new int[numFilas + 2][numFilas + 2]; // +2 para supersource y supersink
@@ -155,6 +154,7 @@ public class ProblemaP2{
             Queue<Integer> queue = new LinkedList<>();
             queue.add(source);
 
+            //BFS
             while (!queue.isEmpty() && parent[sink] == -1) {
                 int u = queue.poll();
                 for (int v = 0; v < n; v++) {
