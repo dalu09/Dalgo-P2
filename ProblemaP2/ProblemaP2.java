@@ -89,7 +89,9 @@ public class ProblemaP2{
 
 
     for (int i = 0; i < nodos.size(); i++) {
-        for (int j = i + 1; j < nodos.size(); j++) {
+        for (int j= 0; j < nodos.size(); j++) {
+            if (i == j) continue;
+
             int id1 = nodos.get(i);
             int id2 = nodos.get(j);
             List<Integer> coords1 = mapaCoor.get(id1);
@@ -102,23 +104,22 @@ public class ProblemaP2{
                     if (tipo1 == 1) {
                         matriz[supersource][id1] = Integer.MAX_VALUE;
                         if (tipo1 == 1 && tipo2 == 2) {
-                            matriz[id1 - 1][id2] += cap;
+                            matriz[id1][id2] += cap;
                         }
                     } else if (tipo1 == 2 && tipo2 == 2) {
-                        matriz[id1 - 1][id2 - 1] += cap;
+                        matriz[id1][id2] += cap;
                     } else if (tipo1 == 2 && tipo2 == 3) {
-                        matriz[id1][id2-1] += cap;
+                        matriz[id1][id2] += cap;
                     }
                     if (tipo2 == 3) {
-                        matriz[id2-2][supersink] = Integer.MAX_VALUE;
+                        matriz[id2][supersink] = Integer.MAX_VALUE;
                     }
                 }
             }
         }
     }
     return matriz;
-}
-
+    }
 
 
     //Formula para contar la cantidad de peptidos (mensajes) entre nodos 
