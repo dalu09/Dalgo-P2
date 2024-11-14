@@ -185,7 +185,7 @@ public class ProblemaP2{
         return maxF;
     }
 
-    // Función para copiar una matriz
+    // Crea la matriz de copia
     public static int[][] copiarMatriz(int[][] original) {
         int[][] copia = new int[original.length][original[0].length];
         for (int i = 0; i < original.length; i++) {
@@ -194,7 +194,6 @@ public class ProblemaP2{
         return copia;
     }
 
-    // Función para bloquear un nodo en la matriz de capacidad
     public static void bloquearNodo(int[][] matriz, int nodo) {
         for (int i = 0; i < matriz.length; i++) {
             matriz[nodo][i] = 0; // Elimina todas las conexiones desde el nodo
