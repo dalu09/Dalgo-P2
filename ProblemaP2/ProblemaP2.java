@@ -51,7 +51,6 @@ public class ProblemaP2{
             }  
 
             int [][] grafo = grafo(mapaCoor, mapa, dist, nodos); 
-            System.out.println(Arrays.deepToString(grafo));
             int maxF = flujoMaximo(grafo, 0, grafo.length - 1);
 
             // Bloqueo de cada célula calculadora
@@ -66,7 +65,7 @@ public class ProblemaP2{
                     int flujoConBloqueo = flujoMaximo(mCopy, 0, mCopy.length - 1);
                     int reduccion = maxF - flujoConBloqueo;
 
-                    if (reduccion > maxReduccion) {
+                    if (reduccion >= maxReduccion) {
                         maxReduccion = reduccion;
                         nodoABloquear = nodo;
                     }
